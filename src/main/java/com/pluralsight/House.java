@@ -21,7 +21,13 @@ public class House extends Asset {
         this.lotSize = lotSize;
     }
 
-    public House(String description, String dateAcquired, BigDecimal originalCost) {super(description, dateAcquired, originalCost);}
+    public House(String description, String dateAcquired, BigDecimal originalCost) {
+        super(description, dateAcquired, originalCost);
+        setAddress("address not found");
+        setCondition(0);
+        setSquareFoot(0);
+        setLotSize(0);
+    }
     public House(String description, String dateAcquired, BigDecimal originalCost, String address, int condition, int squareFoot, int lotSize) {
         super(description, dateAcquired, originalCost);
         this.address = address;
