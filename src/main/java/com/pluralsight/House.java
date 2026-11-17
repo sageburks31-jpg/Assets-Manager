@@ -41,6 +41,15 @@ public class House extends Asset {
 
     public int getCondition() {return condition;}
     public void setCondition(int condition) {this.condition = condition;}
+    public String getCondition(int condition){
+        return switch (getCondition()) {
+            case 1 -> "excellent";
+            case 2 -> "good";
+            case 3 -> "fair";
+            case 4 -> "poor";
+            default -> throw new IllegalStateException("unknown: "+getCondition());
+        };
+    }
 
     public int getSquareFoot() {return squareFoot;}
     public void setSquareFoot(int squareFoot) {this.squareFoot = squareFoot;}
@@ -48,10 +57,16 @@ public class House extends Asset {
     public int getLotSize() {return lotSize;}
     public void setLotSize(int lotSize) {this.lotSize = lotSize;}
 
+    @Override
+    public BigDecimal getBigDecimalValue(){
+        return new  BigDecimal(2);
+    }
+
     public String houseToRow(){
-        return String.format(" address: %s | condition: %d | squareFoot: %d | lotSize: %d %s",
+        return String.format(" address: %s | condition: %d(%s) | squareFoot: %d | lotSize: %d %s",
                 getAddress(),
                 getCondition(),
+                getCondition(getCondition()),
                 getSquareFoot(),
                 getLotSize(),
                 "|"+assetToRow());

@@ -41,6 +41,11 @@ public class Vehicle extends Asset {
     public int getOdometer() {return odometer;}
     public void setOdometer(int odometer) {this.odometer = odometer;}
 
+    @Override
+    public BigDecimal getBigDecimalValue(){
+        return new  BigDecimal(1);
+    }
+
     public String vehicleToRow(){
         return String.format("makeModel: %s | %d | %d %s",
                 getMakeModel(),

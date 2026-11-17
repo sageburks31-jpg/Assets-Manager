@@ -28,6 +28,10 @@ public class Asset {
     public BigDecimal getOriginalCost() {return originalCost;}
     public void setOriginalCost(BigDecimal originalCost) {this.originalCost = originalCost;}
 
+    public BigDecimal getBigDecimalValue(){
+        return new  BigDecimal(0);
+    }
+
     public String assetToRow(){
         return String.format(" description: %s | dateAcquired: %s | originalCost: %s",
                 getDescription(),
