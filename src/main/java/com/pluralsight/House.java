@@ -9,6 +9,7 @@ public class House extends Asset {
     int lotSize;
 
     public House() {
+        System.out.println("House");
         setAddress("address not found");
         setCondition(0);
         setSquareFoot(0);
@@ -47,28 +48,43 @@ public class House extends Asset {
             case 2 -> "good";
             case 3 -> "fair";
             case 4 -> "poor";
-            default -> throw new IllegalStateException("unknown: "+getCondition());
+            default -> "unknown: "+getCondition();
+        };
+    }
+    public double getConditionPrice() {
+        return switch (condition) {
+            case 1 -> 180;
+            case 2 -> 130;
+            case 3 -> 90;
+            case 4 -> 80;
+            default -> getCondition();
+
         };
     }
 
     public int getSquareFoot() {return squareFoot;}
-    public void setSquareFoot(int squareFoot) {this.squareFoot = squareFoot;}
+    public void setSquareFoot(int squareFoot) {
+        System.out.println("setSquareFoot");
+        this.squareFoot = squareFoot;}
 
-    public int getLotSize() {return lotSize;}
+    public int getLotSize() {
+        System.out.println("getLotSize");
+        return lotSize;}
     public void setLotSize(int lotSize) {this.lotSize = lotSize;}
 
     @Override
-    public BigDecimal getBigDecimalValue(){
-        return new  BigDecimal(2);
+    public BigDecimal getBigDecimalValue() {
+        return new BigDecimal((getConditionPrice() * getSquareFoot()) + (0.25 * getLotSize()));
     }
 
     public String houseToRow(){
-        return String.format(" address: %s | condition: %d(%s) | squareFoot: %d | lotSize: %d %s",
+        return String.format(" address: %s | condition: %d(%s) | squareFoot: %d | lotSize: %d | Price: %s %s",
                 getAddress(),
                 getCondition(),
-                getCondition(getCondition()),
+                getCondition(condition),
                 getSquareFoot(),
                 getLotSize(),
+                getBigDecimalValue(),
                 "|"+assetToRow());
     }
 }

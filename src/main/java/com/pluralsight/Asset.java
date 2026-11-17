@@ -29,7 +29,7 @@ public class Asset {
     public void setOriginalCost(BigDecimal originalCost) {this.originalCost = originalCost;}
 
     public BigDecimal getBigDecimalValue(){
-        return new  BigDecimal(0);
+        return originalCost;
     }
 
     public String assetToRow(){
