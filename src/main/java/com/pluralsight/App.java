@@ -1,10 +1,12 @@
 package com.pluralsight;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.math.*;
+import java.time.*;
+import java.util.*;
 
 public class App {
 
+    static ArrayList<Asset> assetList = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -20,6 +22,23 @@ public class App {
         vehicle.setYear(2);
         System.out.println(vehicle.vehicleToRow());
 
+        goodHouse.setDescription("my house");
+        assetList.add(goodHouse);
+
+        House oldHouse = new House();
+        oldHouse.setDescription("tom's house");
+        assetList.add(oldHouse);
+
+        vehicle.setDescription("toms truck");
+        assetList.add(vehicle);
+
+        Vehicle oldCar = new Vehicle();
+        oldCar.setDescription("my car");
+        assetList.add(oldCar);
+
+        for (Asset asset: assetList){
+            System.out.println(asset.assetToRow());
+        }
     }
 
 
