@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.awt.geom.Arc2D;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 public class Vehicle extends Asset {
 
@@ -56,14 +54,14 @@ public class Vehicle extends Asset {
     public void setOdometer(int odometer) {this.odometer = odometer;}
 
     @Override
-    public BigDecimal getBigDecimalValue() {
+    public BigDecimal getValue() {
         BigDecimal bigDecimal = new BigDecimal(1000);
         if (getUsedCost() != 0.0){
             bigDecimal = new BigDecimal(String.valueOf(Double.parseDouble(String.valueOf(getOriginalCost())) * (1 - year * getUsedCost())));
             if ((makeModel.equals("Honda")||makeModel.equals("Toyota")) && odometer>= 100000){
                 return bigDecimal;
             } else {
-               if (odometer>=100000) bigDecimal = new BigDecimal(String.valueOf(Double.parseDouble(String.valueOf(bigDecimal))*.25));
+               if (odometer>100000) bigDecimal = new BigDecimal(String.valueOf(Double.parseDouble(String.valueOf(bigDecimal))*.25));
             }
         }
         return bigDecimal;
@@ -74,7 +72,7 @@ public class Vehicle extends Asset {
                 getMakeModel(),
                 getYear(),
                 getOdometer(),
-                getBigDecimalValue(),
+                getValue(),
                 "|"+assetToRow());
     }
 }

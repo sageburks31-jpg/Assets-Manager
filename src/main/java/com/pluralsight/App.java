@@ -14,13 +14,10 @@ public class App {
         goodHouse.setCondition(2);
         goodHouse.setSquareFoot(1800);
         goodHouse.setLotSize(6000);
-        System.out.println(goodHouse.houseToRow());
 
         Vehicle vehicle = new Vehicle();
         vehicle.setOdometer(100000);
         vehicle.setOriginalCost(new BigDecimal("20000"));
-        vehicle.setYear(2);
-        System.out.println(vehicle.vehicleToRow());
 
         goodHouse.setDescription("my house");
         assetList.add(goodHouse);
@@ -35,9 +32,29 @@ public class App {
         Vehicle oldCar = new Vehicle();
         oldCar.setDescription("my car");
         assetList.add(oldCar);
-
-        for (Asset asset: assetList){
-            System.out.println(asset.assetToRow());
+        for (int i = 0; i < assetList.size(); i++) {
+            switch (assetList.get(i).getClass().getSimpleName()){
+                case "House" ->{
+                    House j = (House) assetList.get(i);
+                    if (i==0) {
+                        j.setAddress("123 Main St, Austin, TX 78701");
+                    } else {
+                        j.setAddress("312 Main St, Buda, TX 87710");
+                    }
+                    System.out.println(j.houseToRow());
+                }
+                case "Vehicle" -> {
+                    Vehicle j = (Vehicle) assetList.get(i);
+                    if (i==2) {
+                        j.setYear(2);
+                        j.setMakeModel("Honda");
+                    } else {
+                        j.setYear(3);
+                        j.setMakeModel("Gems");
+                    }
+                    System.out.println(j.vehicleToRow());
+                }
+            }
         }
     }
 

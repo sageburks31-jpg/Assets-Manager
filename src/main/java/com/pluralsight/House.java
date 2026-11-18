@@ -9,7 +9,6 @@ public class House extends Asset {
     int lotSize;
 
     public House() {
-        System.out.println("House");
         setAddress("address not found");
         setCondition(0);
         setSquareFoot(0);
@@ -63,17 +62,13 @@ public class House extends Asset {
     }
 
     public int getSquareFoot() {return squareFoot;}
-    public void setSquareFoot(int squareFoot) {
-        System.out.println("setSquareFoot");
-        this.squareFoot = squareFoot;}
+    public void setSquareFoot(int squareFoot) {this.squareFoot = squareFoot;}
 
-    public int getLotSize() {
-        System.out.println("getLotSize");
-        return lotSize;}
+    public int getLotSize() {return lotSize;}
     public void setLotSize(int lotSize) {this.lotSize = lotSize;}
 
     @Override
-    public BigDecimal getBigDecimalValue() {
+    public BigDecimal getValue() {
         return new BigDecimal((getConditionPrice() * getSquareFoot()) + (0.25 * getLotSize()));
     }
 
@@ -84,7 +79,7 @@ public class House extends Asset {
                 getCondition(condition),
                 getSquareFoot(),
                 getLotSize(),
-                getBigDecimalValue(),
+                getValue(),
                 "|"+assetToRow());
     }
 }
