@@ -7,6 +7,7 @@ import java.util.*;
 public class App {
 
     static ArrayList<Asset> assetList = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -28,6 +29,9 @@ public class App {
 
         vehicle.setDescription("toms truck");
         assetList.add(vehicle);
+
+        Cash cash = new Cash(new BigDecimal(promptToDecimal("enter money you have under bed \n Here -> ")));
+        assetList.add(cash);
 
         Vehicle oldCar = new Vehicle();
         oldCar.setDescription("my car");
@@ -54,9 +58,27 @@ public class App {
                     }
                     System.out.println(j.vehicleToRow());
                 }
+                case "Cash" -> {
+                    Cash j = (Cash) assetList.get(i);
+                    System.out.println(j.cashToRow());
+                }
             }
         }
     }
 
+    public static double promptToDecimal(String prompt) {
+        double result = 0;
+        boolean isDouble = false;
+        do {
+            System.out.print(prompt);
+            try {
+                result = Double.parseDouble(scanner.nextLine());
+                isDouble = true;
+            } catch (Exception e) {
+                System.out.println("Invalid command");
+            }
+        } while (!isDouble);
+        return result;
+    }
 
 }
