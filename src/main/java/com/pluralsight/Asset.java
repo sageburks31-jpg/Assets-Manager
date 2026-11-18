@@ -31,7 +31,7 @@ public abstract class Asset {
     public abstract BigDecimal getValue();
 
     public String assetToRow(){
-        return String.format(" description: %s | dateAcquired: %s | originalCost: %s",
+        return String.format(" description: %s | dateAcquired: %s | originalCost: %.2f",
                 getDescription(),
                 getDateAcquired(),
                 getOriginalCost());

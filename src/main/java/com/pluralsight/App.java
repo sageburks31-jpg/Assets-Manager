@@ -12,7 +12,7 @@ public class App {
     public static void main(String[] args) {
 
         House goodHouse = new House();
-        goodHouse.setCondition(2);
+        goodHouse.setCondition(2024);
         goodHouse.setSquareFoot(1800);
         goodHouse.setLotSize(6000);
 
@@ -30,7 +30,7 @@ public class App {
         vehicle.setDescription("toms truck");
         assetList.add(vehicle);
 
-        Cash cash = new Cash(new BigDecimal(promptToDecimal("enter money you have under bed \n Here -> ")));
+        Cash cash = new Cash("cash under the mattress", "2026-11-18", new BigDecimal(promptToDecimal("enter money you have under bed \n Here -> ")));
         assetList.add(cash);
 
         Vehicle oldCar = new Vehicle();
@@ -50,10 +50,10 @@ public class App {
                 case "Vehicle" -> {
                     Vehicle j = (Vehicle) assetList.get(i);
                     if (i==2) {
-                        j.setYear(2);
+                        j.setYear(2023);
                         j.setMakeModel("Honda");
                     } else {
-                        j.setYear(3);
+                        j.setYear(2013);
                         j.setMakeModel("Gems");
                     }
                     System.out.println(j.vehicleToRow());
