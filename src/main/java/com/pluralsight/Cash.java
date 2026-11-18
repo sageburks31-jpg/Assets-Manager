@@ -18,22 +18,6 @@ public class Cash extends Asset {
         this.amount = amount;
     }
 
-    public BigDecimal getAmount() {return amount;}
-    public void setAmount(BigDecimal amount) {this.amount = amount;}
-
-    public BigDecimal subtractFromAmount(double reduceValue) {
-        if (reduceValue<0) reduceValue *= -1;
-        double doubleOfAmount = Double.parseDouble(String.valueOf(amount)) - reduceValue;
-        this.amount = new BigDecimal(doubleOfAmount);
-        return amount;
-    }
-    public BigDecimal addToAmount(double reduceValue) {
-        if (reduceValue<0) reduceValue *= -1;
-        double doubleOfAmount = Double.parseDouble(String.valueOf(amount)) + reduceValue;
-        this.amount = new BigDecimal(doubleOfAmount);
-        return amount;
-    }
-
     public String cashToRow(){
         return String.format("amount: %.2f | %s",
                 amount,
