@@ -21,24 +21,13 @@ public class Cash extends Asset {
     public BigDecimal getAmount() {return amount;}
     public void setAmount(BigDecimal amount) {this.amount = amount;}
 
-    public void subtractFromAmount(double reduceValue) {
-        if (reduceValue<0) reduceValue *= -1;
-        double doubleOfAmount = Double.parseDouble(String.valueOf(amount)) - reduceValue;
-        this.amount = new BigDecimal(doubleOfAmount);
-    }
-    public void addToAmount(double reduceValue) {
-        if (reduceValue<0) reduceValue *= -1;
-        double doubleOfAmount = Double.parseDouble(String.valueOf(amount)) + reduceValue;
-        this.amount = new BigDecimal(doubleOfAmount);
-    }
-
-    public BigDecimal subtractFromAmount(float reduceValue) {
+    public BigDecimal subtractFromAmount(double reduceValue) {
         if (reduceValue<0) reduceValue *= -1;
         double doubleOfAmount = Double.parseDouble(String.valueOf(amount)) - reduceValue;
         this.amount = new BigDecimal(doubleOfAmount);
         return amount;
     }
-    public BigDecimal addToAmount(float reduceValue) {
+    public BigDecimal addToAmount(double reduceValue) {
         if (reduceValue<0) reduceValue *= -1;
         double doubleOfAmount = Double.parseDouble(String.valueOf(amount)) + reduceValue;
         this.amount = new BigDecimal(doubleOfAmount);
