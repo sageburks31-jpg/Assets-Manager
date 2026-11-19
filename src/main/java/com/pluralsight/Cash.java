@@ -26,6 +26,6 @@ public class Cash extends Asset {
 
     @Override
     public BigDecimal getValue() {
-        return null;
+        return originalCost;
     }
 }

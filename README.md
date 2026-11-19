@@ -20,7 +20,4 @@ Location: App class | Main method | at lines: 39 - 67
 
 2. What were your options to address these issues?
    - build the override method
---- 
-##
-
---- 
+---
