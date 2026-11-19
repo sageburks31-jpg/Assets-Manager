@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Vehicle extends Asset {
 
@@ -39,12 +40,12 @@ public class Vehicle extends Asset {
     public void setYear(int year) {this.year = year;}
 
     public double getUsedCost() {
-//        double yearDifference = Double.parseDouble(String.valueOf(LocalDate.now().getYear())) - getYear() ;
-        if (year<4) {
+        double yearDifference = Double.parseDouble(String.valueOf(LocalDate.now().getYear())) - getYear() ;
+        if (yearDifference<4) {
             return 0.03;
-        } else if (year<7){
+        } else if (yearDifference<7){
             return 0.06;
-        } else if (year<11){
+        } else if (yearDifference<11){
             return 0.08;
         }
         return 0;
@@ -57,7 +58,7 @@ public class Vehicle extends Asset {
     public BigDecimal getValue() {
         BigDecimal bigDecimal = new BigDecimal(1000);
         if (getUsedCost() != 0.0){
-            bigDecimal = new BigDecimal(String.valueOf(Double.parseDouble(String.valueOf(getOriginalCost())) * (1 - year * getUsedCost())));
+            bigDecimal = new BigDecimal(String.valueOf(Double.parseDouble(String.valueOf(getOriginalCost())) * (1 - (Double.parseDouble(String.valueOf(LocalDate.now().getYear()))-year) * getUsedCost())));
             if ((makeModel.equals("Honda")||makeModel.equals("Toyota")) && odometer>= 100000){
                 return bigDecimal;
             } else {

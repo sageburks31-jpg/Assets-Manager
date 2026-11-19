@@ -2,7 +2,7 @@ package com.pluralsight;
 
 import java.math.*;
 
-public class Asset {
+public abstract class Asset {
 
     String description;
     String dateAcquired;
@@ -28,12 +28,10 @@ public class Asset {
     public BigDecimal getOriginalCost() {return originalCost;}
     public void setOriginalCost(BigDecimal originalCost) {this.originalCost = originalCost;}
 
-    public BigDecimal getValue(){
-        return originalCost;
-    }
+    public abstract BigDecimal getValue();
 
     public String assetToRow(){
-        return String.format(" description: %s | dateAcquired: %s | originalCost: %s",
+        return String.format(" description: %s | dateAcquired: %s | originalCost: %.2f",
                 getDescription(),
                 getDateAcquired(),
                 getOriginalCost());

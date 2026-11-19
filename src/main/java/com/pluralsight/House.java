@@ -47,7 +47,7 @@ public class House extends Asset {
             case 2 -> "good";
             case 3 -> "fair";
             case 4 -> "poor";
-            default -> "unknown: "+getCondition();
+            default -> "unknown: "+condition;
         };
     }
     public double getConditionPrice() {
