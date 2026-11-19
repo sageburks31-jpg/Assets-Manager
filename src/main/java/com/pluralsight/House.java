@@ -39,6 +39,7 @@ public class House extends Asset {
     public String getAddress() {return address;}
     public void setAddress(String address) {this.address = address;}
 
+
     public int getCondition() {return condition;}
     public void setCondition(int condition) {this.condition = condition;}
     public String getCondition(int condition){
